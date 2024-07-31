@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron">
+        {% if current_user.is_authenticated %}
+            <h1 class="display-4">Добро пожаловать, {{ current_user.username }}!</h1>
+            <p class="lead">Это главная страница сайта.</p>
+        {% else %}
+            <h1 class="display-4">Добро пожаловать!</h1>
+            <p class="lead">Пожалуйста, <a href="{{ url_for('login') }}">войдите</a> или <a href="{{ url_for('register') }}">зарегистрируйтесь</a>.</p>
+        {% endif %}
+        <hr class="my-4">
+        <p>FlaskAuthApp is a sample application demonstrating user authentication and authorization with Flask.</p>
+    </div>
+{% endblock %}
